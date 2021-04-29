@@ -1,0 +1,13 @@
+[Unit]
+Description=USB Daemon for automatic mounting Apple Devices
+StartLimitIntervalSec=500
+StartLimitBurst=50
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/imount-daemon
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
