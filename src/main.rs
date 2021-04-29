@@ -21,7 +21,7 @@ fn main() {
         match args[0].as_ref() {
             "autostart" => {
                 let command = r#"
-                sudo systemctl enable --now imount-daemon.service
+                sudo systemctl enable --now imount.service
                 sudo modprobe fuse
                 echo -e fuse | sudo tee /etc/modules-load.d/imount.conf
                 "#;

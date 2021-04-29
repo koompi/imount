@@ -89,7 +89,7 @@ fn main() -> io::Result<()> {
 
                     if is_known(device_id.to_str().unwrap()) {
                         Exec::cmd(bin_path)
-                            .arg("--connect")
+                            .arg("connect")
                             .env("PAIRED", "true")
                             .detached()
                             .stdout(NullFile)
@@ -98,7 +98,7 @@ fn main() -> io::Result<()> {
                     } else {
                         println!("pair and connect");
                         Exec::cmd(bin_path)
-                            .arg("--connect")
+                            .arg("connect")
                             .detached()
                             .stdout(NullFile)
                             .capture()
@@ -113,7 +113,7 @@ fn main() -> io::Result<()> {
                 if evid.to_str().unwrap().to_string() == event_id {
                     println!("Unmount device");
                     Exec::cmd(bin_path)
-                        .arg("-d")
+                        .arg("disconnect")
                         .detached()
                         .stdout(NullFile)
                         .capture()
