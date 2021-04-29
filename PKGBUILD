@@ -18,8 +18,8 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/{bin,lib/systemd/system/}
+  mkdir -p $pkgdir/usr/{bin,share/imount}
   install -Dm755 $srcdir/imount/target/release/imount $pkgdir/usr/bin
   install -Dm755 $srcdir/imount/target/release/imount-daemon $pkgdir/usr/bin
-  install -Dm644 $srcdir/imount/imount.service $pkgdir/usr/lib/systemd/system/
+  install -Dm644 $srcdir/imount/imount.service $pkgdir/usr/share/imount
 }

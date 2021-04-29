@@ -21,9 +21,11 @@ fn main() {
         match args[0].as_ref() {
             "autostart" => {
                 let command = r#"
-                sudo systemctl enable --now imount.service
                 sudo modprobe fuse
                 echo -e fuse | sudo tee /etc/modules-load.d/imount.conf
+                mkdir -p $HOME/.config/systemd/user
+                cp /usr/share/imount/imount.service $HOME/.config/systemd/user
+                systemctl --user enable --now imount.service
                 "#;
                 Exec::shell(command)
                     .detached()
